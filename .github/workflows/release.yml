@@ -85,7 +85,7 @@ jobs:
           GH_TOKEN: ${{ secrets.PLUGIN_ACTION }}
         run: |
           gh pr create \
-            --repo langgenius/dify-plugins \
+            --repo schnee-and-tetra/dify-plugins \
             --head schnee-and-tetra:add-${{ steps.plugin.outputs.name }}-${{ steps.plugin.outputs.version }} \
             --base main \
             --title "Add ${{ steps.plugin.outputs.name }} plugin" \
