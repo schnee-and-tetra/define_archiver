@@ -1,0 +1,228 @@
+identity:
+    name: iterator_finalize
+    author: schnee_and_tetra
+    label:
+        en_US: Iterator Data Finalize
+        ja_JP: イテレーター用・データ圧縮
+        zh_Hans: 迭代器数据压缩
+        zh_Hant: 疊代器資料壓縮
+description:
+    human:
+        en_US: Finalize all data collected by Iterator Data Collect and generate one archive for each group ID using the specified compression format. This tool must be placed only once per workflow.
+        ja_JP: Iterator Data Collectで収集したデータをグループID毎に指定した圧縮形式で確定します。本ツールはワークフロー内に1個のみ配置してください。
+        zh_Hans: 将 Iterator Data Collect 收集的数据按组ID使用指定的压缩格式进行最终归档。每个组ID将生成一个归档文件。本工具在一个工作流中只能配置一个。
+        zh_Hant: 將 Iterator Data Collect 收集的資料依群組 ID 使用指定的壓縮格式進行最終封存。每個群組 ID 將產生一個封存檔。本工具在一個工作流程中只能配置一個。
+    llm: Finalize all data collected by Iterator Data Collect and generate one archive for each group ID using the specified archive format and compression settings. Only one Iterator Data Finalize node should exist per workflow because this tool finalizes all collected data for the workflow run.
+parameters:
+    - name: collect_group_id
+      type: string
+      required: true
+      label:
+          en_US: Collect Group ID
+          ja_JP: 収集グループID
+          zh_Hans: 收集组ID
+          zh_Hant: 收集群組ID
+      human_description:
+          en_US: "Specifies the group ID used for compression. All data with the same group ID will be compressed into a single archive."
+          ja_JP: "圧縮に使用するグループIDを指定します。同じグループIDのデータは1つのアーカイブにまとめて圧縮されます。"
+          zh_Hans: "指定用于压缩的组ID。具有相同组ID的数据将压缩为一个归档文件。"
+          zh_Hant: "指定用於壓縮的群組 ID。具有相同群組 ID 的資料將壓縮為一個封存檔。"
+      llm_description: Group ID used to determine which data is compressed into the same archive.
+      form: llm
+    - name: content_folder
+      type: string
+      required: true
+      label:
+          en_US: Content folder
+          ja_JP: コンテンツフォルダー
+          zh_Hans: 内容文件夹
+          zh_Hant: 內容檔案夾
+      human_description:
+          en_US: "Specify the folder path(s) inside the archive. A single path applies to all files; comma-separated paths can be used to specify a folder for each file. (e.g., 'book1/chapter1' or 'book1,book2')"
+          ja_JP: "アーカイブ内のフォルダーパスを指定します。1つのパスを指定した場合は全ファイルに適用され、カンマ区切りで指定した場合は各ファイルのフォルダーを指定できます。（例: 'book1/chapter1' または 'book1,book2'）"
+          zh_Hans: "指定归档文件中的文件夹路径。指定单个路径时将应用于所有文件，使用逗号分隔多个路径时可为每个文件指定对应的文件夹。（例如：'book1/chapter1' 或 'book1,book2'）"
+          zh_Hant: "指定封存檔案中的資料夾路徑。指定單個路徑時將適用於所有檔案，使用逗號分隔多個路徑時可為每個檔案指定對應的資料夾。（例如：'book1/chapter1' 或 'book1,book2'）"
+      llm_description: "Folder path(s) inside the generated archive where files will be stored. A single path applies to all files; comma-separated paths specify folders for each file in order. Do not include filenames."
+      form: llm
+    - name: content_prefix
+      type: string
+      required: true
+      label:
+          en_US: Content prefix
+          ja_JP: コンテンツ接頭辞
+          zh_Hans: 内容前缀
+          zh_Hant: 內容字首
+      human_description:
+          en_US: "Specify the filename prefix in the archive. (e.g., 'part_')."
+          ja_JP: "アーカイブ内のファイル名の接頭辞を指定します。（例: 'part_'）"
+          zh_Hans: "指定封存盘中的文件名前缀。（例如：'part_'）"
+          zh_Hant: "指定封存檔案中的檔案名稱字首。（例如：'part_'）"
+      llm_description: "The prefix used for automatically generated filenames. A sequential number will be added automatically based on the total file count."
+      default: "part_"
+      form: llm
+    - name: index_padding_width
+      type: number
+      required: true
+      label:
+          en_US: Index padding width
+          ja_JP: インデックスゼロ埋め桁数
+          zh_Hans: 索引补零位数
+          zh_Hant: 索引補零位數
+      human_description:
+          en_US: "Specify the number of digits for zero-padding sequential index numbers in generated filenames. (e.g., 3 → 001)"
+          ja_JP: "生成されるファイル名の連番インデックスをゼロ埋めする桁数を指定します。（例: 3 → 001）"
+          zh_Hans: "指定生成的的文件名中，自动生成序号的补零位数。（例如：3 → 001）"
+          zh_Hant: "指定產生的檔案名稱中，自動生成序號的補零位數。（例如：3 → 001）"
+      llm_description: "Number of digits used to zero-pad sequential index numbers in generated filenames. For example, 3 produces indexes such as 001, 002, and 003."
+      default: 3
+      form: llm
+    - name: content_extension
+      type: string
+      required: true
+      label:
+          en_US: Content extension
+          ja_JP: コンテンツ拡張子
+          zh_Hans: 内容扩展名
+          zh_Hant: 內容副檔名
+      human_description:
+          en_US: "Specify the file extension for generated archive files. (e.g., 'txt'). If 'Decode Base64 data' is enabled, the detected file extension takes precedence."
+          ja_JP: "生成されるアーカイブファイルの拡張子を指定します。（例: 'txt'）「Base64データをデコードする」が有効な場合は、検出されたファイル拡張子が優先されます。"
+          zh_Hans: "指定产生的封存文件的文件扩展名（例如：'txt'）。如果启用了“解码 Base64 数据”，则以检测到的文件扩展名为准。"
+          zh_Hant: "指定產生的封存檔案的副檔名（例如：'txt'）。如果啟用「解碼 Base64 資料」，則以偵測到的檔案副檔名為準。"
+      llm_description: "The file extension for generated archive entries. Specify without the leading dot. If 'Decode Base64 data' is enabled, the detected file extension takes precedence."
+      default: "txt"
+      form: llm
+    - name: decode_base64
+      type: boolean
+      required: true
+      default: false
+      label:
+          en_US: Decode Base64 data
+          ja_JP: Base64データをデコードする
+          zh_Hans: 解码 Base64 数据
+          zh_Hant: 解碼 Base64 資料
+      human_description:
+          en_US: "Decodes Base64 text to restore images with their proper extensions (png, jpeg). [⚠️Warn.] If applied to normal plain text, the original text content cannot be guaranteed."
+          ja_JP: "Base64テキストをデコードし、画像を正しい拡張子(png/jpeg等)で復元します。【⚠️注意】通常のテキスト（文章）に有効にした場合、元のテキストデータは保証されません。"
+          zh_Hans: "解码 Base64 文本以恢复带有正确扩展名（png、jpeg 等）的图像。【⚠️注意】如果对普通文本启用此功能，则无法保证原始文本内容。"
+          zh_Hant: "解碼 Base64 文字以恢復帶有正確副檔名（png、jpeg 等）的圖像。【⚠️注意】如果對普通純文字啟用此功能，則無法保證原始文字內容。"
+      llm_description: Set to true when the input content is a Base64-encoded binary string (e.g., images). This enables decoding back to raw bytes so that downstream compilation tools can seamlessly restore the files with their proper extensions (like png or jpeg). Set to false for normal plain text.
+      form: llm
+    - name: format
+      type: select
+      required: true
+      default: zip
+      options:
+          - value: zip
+            label:
+                en_US: ZIP (.zip)
+                ja_JP: ZIP (.zip)
+                zh_Hans: ZIP (.zip)
+                zh_Hant: ZIP (.zip)
+          - value: tar.gz
+            label:
+                en_US: TAR.GZ (.tar.gz)
+                ja_JP: TAR.GZ (.tar.gz)
+                zh_Hans: TAR.GZ (.tar.gz)
+                zh_Hant: TAR.GZ (.tar.gz)
+          - value: tar.zst
+            label:
+                en_US: TAR.ZST (.tar.zst)
+                ja_JP: TAR.ZST (.tar.zst)
+                zh_Hans: TAR.ZST (.tar.zst)
+                zh_Hant: TAR.ZST (.tar.zst)
+      label:
+          en_US: Archive Format
+          ja_JP: 圧縮形式
+          zh_Hans: 压缩格式
+          zh_Hant: 壓縮格式
+      human_description:
+          en_US: Choose the output archive format.
+          ja_JP: 出力する圧縮アーカイブの形式を選択します。
+          zh_Hans: 选择输出的压缩格式。
+          zh_Hant: 選擇輸出的壓縮格式。
+      llm_description: Archive output format. zip provides maximum compatibility. tar.gz is suitable for Unix systems. tar.zst provides high-speed compression for large datasets.
+      form: llm
+    - name: compression
+      type: select
+      required: true
+      default: normal
+      options:
+          - value: store
+            label:
+                en_US: Store
+                ja_JP: 圧縮なし (Store)
+                zh_Hans: 仅存储/不压缩 (Store)
+                zh_Hant: 僅存儲/不壓縮 (Store)
+          - value: fast
+            label:
+                en_US: Fast
+                ja_JP: 最速 (Fast)
+                zh_Hans: 快速 (Fast)
+                zh_Hant: 快速 (Fast)
+          - value: normal
+            label:
+                en_US: Normal
+                ja_JP: 標準 (Normal)
+                zh_Hans: 标准 (Normal)
+                zh_Hant: 標準 (Normal)
+          - value: best
+            label:
+                en_US: Best
+                ja_JP: 最高圧縮 (Best)
+                zh_Hans: 最高压缩比 (Best)
+                zh_Hant: 最高壓縮比 (Best)
+      label:
+          en_US: Compression Level
+          ja_JP: 圧縮レベル
+          zh_Hans: 压缩级别
+          zh_Hant: 壓縮級別
+      human_description:
+          en_US: Select compression balance.
+          ja_JP: 圧縮スピードとファイルサイズのバランスを調整します。
+          zh_Hans: 选择压缩速度与文件大小之间的平衡。
+          zh_Hant: 選擇壓縮速度與檔案大小之間的平衡。
+      llm_description: Compression level. store disables compression. fast prioritizes speed.normal balances speed and size. best prioritizes smallest archive size.
+      form: llm
+    - name: include_manifest
+      type: boolean
+      required: true
+      default: true
+      label:
+          en_US: Include manifest.json
+          ja_JP: manifest.jsonを含める
+          zh_Hans: 包含 manifest.json 文件
+          zh_Hant: 包含 manifest.json 檔案
+      human_description:
+          en_US: Automatically generate and include a metadata manifest.json in the root.
+          ja_JP: アーカイブのルート直下に、生成日時やファイル情報を記載したmanifest.jsonを自動添付します。
+          zh_Hans: 自动在根目录下产生并包含一个元数据 manifest.json 文件。
+          zh_Hant: 自動在根目錄下產生並包含一個元數據 manifest.json 檔案。
+      llm_description: Set to true to embed a manifest.json containing generation metadata in the archive root directory. Use archive_path to preserve the intended directory structure inside the archive.
+      form: llm
+    - name: workflow_run_id
+      type: string
+      required: true
+      default: "{{#sys.workflow_run_id#}}"
+      label:
+          en_US: workflow_run_id
+          ja_JP: workflow_run_id
+          zh_Hans: workflow_run_id
+          zh_Hant: workflow_run_id
+      human_description:
+          en_US: workflow_run_id
+          ja_JP: workflow_run_id
+          zh_Hans: workflow_run_id
+          zh_Hant: workflow_run_id
+      llm_description: workflow_run_id
+      form: llm
+
+output_schema:
+    type: object
+    properties:
+        archives:
+            type: array[file]
+
+extra:
+    python:
+        source: tools/iterator_finalize/iterator_finalize.py

@@ -1,0 +1,26 @@
+identity:
+    author: schnee_and_tetra
+    name: define_archiver
+    label:
+        en_US: Define Archiver
+        ja_JP: Define Archiver (一括階層圧縮)
+        zh_Hans: Define Archiver (文件层级打包)
+        zh_Hant: Define Archiver (檔案階層封裝)
+    description:
+        en_US: Define Archiver allows Dify workflows to organize and package files into portable archives with custom folder structures. Supports zip, tar.gz, and tar.zst.
+        ja_JP: Define Archiverは、Difyワークフロー内のファイルを任意のフォルダ構造で整理し、zip、tar.gz、tar.zst形式のアーカイブとしてパッケージ化します。
+        zh_Hans: Define Archiver 允许 Dify 工作流将文件按自定义文件夹结构组织并打包为便携式归档文件。支持 zip、tar.gz 和 tar.zst 格式。
+        zh_Hant: Define Archiver 允許 Dify 工作流將檔案按自訂資料夾構造組織並封裝為可攜式封存檔案。支援 zip、tar.gz 和 tar.zst 格式。
+    icon: icon.svg
+    tags:
+        - productivity
+        - business
+tools:
+    - tools/archive/archive.yaml
+    - tools/archive_inspect/archive_inspect.yaml
+    - tools/iterator_collect/iterator_collect.yaml
+    - tools/iterator_finalize/iterator_finalize.yaml
+
+extra:
+    python:
+        source: provider/define_archiver.py

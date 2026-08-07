@@ -1,0 +1,81 @@
+identity:
+    name: iterator_collect
+    author: schnee_and_tetra
+    label:
+        en_US: Iterator Data Collect
+        ja_JP: イテレーター用・データ収集
+        zh_Hans: 迭代器数据收集
+        zh_Hant: 疊代器資料收集
+description:
+    human:
+        en_US: Data is collected for multiple distinct groups (group IDs) within the iterator and temporarily saved as compressed files (zst). By calling "Iterator Data Finalize" outside the iterator, compressed files can be generated for each group.
+        ja_JP: イテレーター内部で複数の異なるグループ（グループID）毎にデータ収集して圧縮ファイル(zst)にて仮保存します。イテレーター外にてIterator Data Finalizeを呼び出すことでグループ毎の圧縮ファイルが作成可能です。
+        zh_Hans: 在迭代器内部按多个不同的分组（组ID）收集数据，并以压缩文件（zst）临时保存。通过在迭代器外部调用“Iterator Data Finalize”，即可为每个组生成对应的压缩文件。
+        zh_Hant: 在疊代器內部依多個不同的群組（群組 ID）收集資料，並以壓縮檔（zst）暫時儲存。於疊代器外部呼叫「Iterator Data Finalize」後，即可為各群組產生對應的壓縮檔。
+    llm: Collect data for each group ID during iterator execution and temporarily store it as compressed zst files. The final archive for each group is created later by the Iterator Data Finalize tool.
+parameters:
+    - name: collect_group_id
+      type: string
+      required: true
+      label:
+          en_US: Collect Group ID
+          ja_JP: 収集グループID
+          zh_Hans: 收集组ID
+          zh_Hant: 收集群組ID
+      human_description:
+          en_US: "This is the group ID for the data to be collected. Since final compression is performed on a per-group-ID basis, please specify a different value if you are creating multiple sets of data."
+          ja_JP: "収集するデータのグループIDです最終的な圧縮はグループID単位で行われるため、複数のデータを作成する場合は異なる値を指定してください。"
+          zh_Hans: "用于收集数据的组ID。最终压缩将按组ID分别执行，因此如果需要生成多个数据集，请指定不同的值。"
+          zh_Hant: "用於收集資料的群組 ID。最終壓縮將依群組 ID 個別執行，因此若要建立多個資料集，請指定不同的值。"
+      llm_description: Unique group ID used to collect related data. The final archive is created separately for each group ID.
+      form: llm
+    - name: iterator_index
+      type: number
+      required: true
+      label:
+          en_US: Iterator index
+          ja_JP: 現在の処理番号(Iterator index)
+          zh_Hans: 迭代器索引 (Iterator index)
+          zh_Hant: 疊代器索引 (Iterator index)
+      human_description:
+          en_US: Index value provided by the iterator workflow.
+          ja_JP: イテレーターから提供されるindex値。
+          zh_Hans: 迭代器工作流提供的索引值。
+          zh_Hant: 疊代器工作流提供的索引值。
+      llm_description: Index value of the current iterator item.
+      form: llm
+    - name: content
+      type: string
+      required: true
+      label:
+          en_US: Content
+          ja_JP: コンテンツ
+          zh_Hans: 内容
+          zh_Hant: 內容
+      human_description:
+          en_US: Data of the content to be compressed.
+          ja_JP: 圧縮対象となるコンテンツのデータ。
+          zh_Hans: 待压缩内容的数据。
+          zh_Hant: 待壓縮內容的資料。
+      llm_description: Text data to be stored in the archive.
+      form: llm
+    - name: workflow_run_id
+      type: string
+      required: true
+      default: "{{#sys.workflow_run_id#}}"
+      label:
+          en_US: workflow_run_id
+          ja_JP: workflow_run_id
+          zh_Hans: workflow_run_id
+          zh_Hant: workflow_run_id
+      human_description:
+          en_US: workflow_run_id
+          ja_JP: workflow_run_id
+          zh_Hans: workflow_run_id
+          zh_Hant: workflow_run_id
+      llm_description: workflow_run_id
+      form: llm
+
+extra:
+    python:
+        source: tools/iterator_collect/iterator_collect.py

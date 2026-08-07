@@ -1,0 +1,37 @@
+identity:
+    name: archive_inspect
+    author: schnee_and_tetra
+    label:
+        en_US: Archive Inspector
+        ja_JP: 圧縮ファイル検査
+        zh_Hans: 压缩包查看器
+        zh_Hant: 壓縮檔檢視器
+
+description:
+    human:
+        en_US: Scans multiple archive files (ZIP/TAR/GZ/ZST) without decompressing them and returns a JSON array detailing the full paths and types (file/folder) of all contents.
+        ja_JP: 複数の圧縮アーカイブ（ZIP/TAR/GZ/ZST）を解凍せずに一括スキャンし、格納されている全要素のフルパスと種別（ファイル/フォルダ）の詳細をJSON配列で返します。
+        zh_Hans: 在不解压的情况下，一轻量化扫描多个压缩文件（ZIP/TAR/GZ/ZST），并以 JSON 数组形式返回其中包含的所有项（文件/文件夹）的完整路径与类型。
+        zh_Hant: 在不解壓的情況下，一輕量化掃描多個壓縮檔案（ZIP/TAR/GZ/ZST），並以 JSON 陣列形式返回其中包含的所有項（檔案/資料夾）的完整路徑與類型。
+    llm: Use this tool to inspect multiple archive files simultaneously without extraction. It returns a JSON array of objects containing the filename, mime-type, processing status, and a list of internal paths mapped with their types (file or folder). The archive format is automatically detected from the extension.
+
+parameters:
+    - name: archive_files
+      type: files
+      required: true
+      label:
+          en_US: Archive Files
+          ja_JP: 解析対象の圧縮ファイル
+          zh_Hans: 待解析的压缩文件
+          zh_Hant: 待解析的壓縮文件
+      human_description:
+          en_US: Archive files to inspect. Multiple archive files can be provided.
+          ja_JP: 内容を解析する圧縮ファイルを指定します。複数ファイルを指定できます。
+          zh_Hans: 指定需要解析的压缩文件。可以提供多个文件。
+          zh_Hant: 指定需要解析的壓縮檔案。可以提供多個檔案。
+      llm_description: Archive files to inspect. The archive format is automatically detected from the file content.
+      form: llm
+
+extra:
+    python:
+        source: tools/archive_inspect/archive_inspect.py

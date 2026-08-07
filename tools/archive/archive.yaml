@@ -1,0 +1,178 @@
+identity:
+    name: archive
+    author: schnee_and_tetra
+    label:
+        en_US: File compression
+        ja_JP: ファイル圧縮
+        zh_Hans: 文件压缩
+        zh_Hant: 檔案壓縮
+description:
+    human:
+        en_US: Compresses mass files into a single ZIP, TAR.GZ, or TAR.ZST archive while preserving custom folder structures. Compress multiple files into a ZIP, TAR.GZ, or TAR.ZST archive while preserving custom directory structures.
+        ja_JP: 任意のフォルダ構造を保持したまま、複数のファイルを一括でZIP/TAR.GZ/TAR.ZSTに圧縮します。生成された複数のファイルをパッケージ化する際、ディレクトリ構造を維持します。
+        zh_Hans: 在保持自定义文件夹结构的同时，将多个文件批量压缩为单个 ZIP、TAR.GZ 或 TAR.ZST 归档文件。在打包生成的多文件時，会维持其目录结构。
+        zh_Hant: 在保持自訂資料夾結構的同時，將多個檔案批次壓縮為單個 ZIP、TAR.GZ 或 TAR.ZST 封存檔案。在封裝產生的多個檔案時，會維持其目錄結構。
+    llm: Use this tool when you need to pack, bundle, or compress multiple files into a single archive file (ZIP/TAR/ZSTD) with a structured directory tree for user downloading or storage.
+parameters:
+    - name: archive_name
+      type: string
+      required: true
+      label:
+          en_US: Archive name (without extension)
+          ja_JP: 圧縮ファイル名（拡張子なし）
+          zh_Hans: 压缩文件名（不含扩展名）
+          zh_Hant: 壓縮檔案名稱（不含副檔名）
+      human_description:
+          en_US: "The name of the compressed file to be created. (e.g., 'archive_1')."
+          ja_JP: "作成する圧縮ファイルの名前。（例: 'archive_1'）"
+          zh_Hans: "要创建的压缩文件名称。（例如：'archive_1'）"
+          zh_Hant: "要建立的壓縮檔案名稱。（例如：'archive_1'）"
+      llm_description: The name for this archive session. Use the same name for all files that should be included in one archive.
+      form: llm
+    - name: files
+      type: files
+      required: true
+      label:
+          en_US: Files to archive
+          ja_JP: 圧縮するファイル群
+          zh_Hans: 待压缩的文件
+          zh_Hant: 待壓縮的檔案
+      human_description:
+          en_US: Array of file objects to be compressed.
+          ja_JP: 圧縮対象となるファイルオブジェクトの配列を指定します。
+          zh_Hans: 指定需要压缩的文件对象数组。
+          zh_Hant: 指定需要壓縮的檔案物件陣列。
+      llm_description: The array of file objects generated or gathered in the workflow that need to be compressed.
+      form: llm
+    - name: archive_path
+      type: string
+      required: true
+      label:
+          en_US: Internal archive path
+          ja_JP: アーカイブ内パス
+          zh_Hans: 压缩包内路径
+          zh_Hant: 壓縮包內路徑
+      human_description:
+          en_US: "Specify the folder path(s) inside the archive. A single path applies to all files; comma-separated paths can be used to specify a folder for each file. (e.g., 'book1/chapter1' or 'book1,book2')"
+          ja_JP: "アーカイブ内のフォルダーパスを指定します。1つのパスを指定した場合は全ファイルに適用され、カンマ区切りで指定した場合は各ファイルのフォルダーを指定できます。（例: 'book1/chapter1' または 'book1,book2'）"
+          zh_Hans: "指定归档文件中的文件夹路径。指定单个路径时将应用于所有文件，使用逗号分隔多个路径时可为每个文件指定对应的文件夹。（例如：'book1/chapter1' 或 'book1,book2'）"
+          zh_Hant: "指定封存檔案中的資料夾路徑。指定單個路徑時將適用於所有檔案，使用逗號分隔多個路徑時可為每個檔案指定對應的資料夾。（例如：'book1/chapter1' 或 'book1,book2'）"
+      llm_description: "Folder path(s) inside the generated archive where files will be stored. A single path applies to all files; comma-separated paths specify folders for each file in order. Do not include filenames."
+      form: llm
+    - name: format
+      type: select
+      required: true
+      default: zip
+      options:
+          - value: zip
+            label:
+                en_US: ZIP (.zip)
+                ja_JP: ZIP (.zip)
+                zh_Hans: ZIP (.zip)
+                zh_Hant: ZIP (.zip)
+          - value: tar.gz
+            label:
+                en_US: TAR.GZ (.tar.gz)
+                ja_JP: TAR.GZ (.tar.gz)
+                zh_Hans: TAR.GZ (.tar.gz)
+                zh_Hant: TAR.GZ (.tar.gz)
+          - value: tar.zst
+            label:
+                en_US: TAR.ZST (.tar.zst)
+                ja_JP: TAR.ZST (.tar.zst)
+                zh_Hans: TAR.ZST (.tar.zst)
+                zh_Hant: TAR.ZST (.tar.zst)
+      label:
+          en_US: Archive Format
+          ja_JP: 圧縮形式
+          zh_Hans: 压缩格式
+          zh_Hant: 壓縮格式
+      human_description:
+          en_US: Choose the output archive format.
+          ja_JP: 出力する圧縮アーカイブの形式を選択します。
+          zh_Hans: 选择输出的压缩归档格式。
+          zh_Hant: 選擇輸出的壓縮封存格式。
+      llm_description: Archive output format. zip provides maximum compatibility. tar.gz is suitable for Unix systems. tar.zst provides high-speed compression for large datasets.
+      form: llm
+    - name: compression
+      type: select
+      required: true
+      default: normal
+      options:
+          - value: store
+            label:
+                en_US: Store
+                ja_JP: 圧縮なし (Store)
+                zh_Hans: 仅存储/不压缩 (Store)
+                zh_Hant: 僅儲存/不壓縮 (Store)
+          - value: fast
+            label:
+                en_US: Fast
+                ja_JP: 最速 (Fast)
+                zh_Hans: 快速 (Fast)
+                zh_Hant: 快速 (Fast)
+          - value: normal
+            label:
+                en_US: Normal
+                ja_JP: 標準 (Normal)
+                zh_Hans: 标准 (Normal)
+                zh_Hant: 標準 (Normal)
+          - value: best
+            label:
+                en_US: Best
+                ja_JP: 最高圧縮 (Best)
+                zh_Hans: 最高压缩比 (Best)
+                zh_Hant: 最高壓縮比 (Best)
+      label:
+          en_US: Compression Level
+          ja_JP: 圧縮レベル
+          zh_Hans: 压缩级别
+          zh_Hant: 壓縮層級
+      human_description:
+          en_US: Select compression balance.
+          ja_JP: 圧縮スピードとファイルサイズのバランスを調整します。
+          zh_Hans: 选择压缩速度与文件大小之间的平衡。
+          zh_Hant: 選擇壓縮速度與檔案大小之間的平衡。
+      llm_description: Compression level. store disables compression. fast prioritizes speed.normal balances speed and size. best prioritizes smallest archive size.
+      form: llm
+    - name: include_manifest
+      type: boolean
+      required: true
+      default: true
+      label:
+          en_US: Include manifest.json
+          ja_JP: manifest.jsonを含める
+          zh_Hans: 包含 manifest.json
+          zh_Hant: 包含 manifest.json
+      human_description:
+          en_US: Automatically generate and include a metadata manifest.json in the root.
+          ja_JP: アーカイブのルート直下に、生成日時やファイル情報を記載したmanifest.jsonを自動添付します。
+          zh_Hans: 自动在根目录下生成并包含一个元数据 manifest.json 文件。
+          zh_Hant: 自動在根目錄下產生並包含一個中介資料 manifest.json 檔案。
+      llm_description: Set to true to embed a manifest.json containing generation metadata in the archive root directory. Use archive_path to preserve the intended directory structure inside the archive.
+      form: llm
+    - name: workflow_run_id
+      type: string
+      required: true
+      default: "{{#sys.workflow_run_id#}}"
+      label:
+          en_US: workflow_run_id
+          ja_JP: workflow_run_id
+          zh_Hans: workflow_run_id
+          zh_Hant: workflow_run_id
+      human_description:
+          en_US: workflow_run_id
+          ja_JP: workflow_run_id
+          zh_Hans: workflow_run_id
+          zh_Hant: workflow_run_id
+      llm_description: workflow_run_id
+      form: llm
+
+output_schema:
+    type: object
+    properties:
+        archives:
+            type: array[file]
+extra:
+    python:
+        source: tools/archive/archive.py

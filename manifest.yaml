@@ -1,0 +1,40 @@
+version: 0.0.1
+type: plugin
+author: schnee_and_tetra
+name: define_archiver
+label:
+  en_US: Define Archiver
+  ja_JP: Define Archiver (一括階層圧縮)
+  zh_Hans: Define Archiver (文件层级打包)
+  zh_Hant: Define Archiver (檔案階層封裝)
+description:
+  en_US: Define Archiver allows Dify workflows to organize and package files into portable archives with custom folder structures. Supports zip, tar.gz, and tar.zst.
+  ja_JP: Define Archiverは、Difyワークフロー内のファイルを任意のフォルダ構造で整理し、zip、tar.gz、tar.zst形式のアーカイブとしてパッケージ化します。
+  zh_Hans: Define Archiver 允许 Dify 工作流将文件按自定义文件夹结构组织并打包为便携式归档文件. 支持 zip、tar.gz 和 tar.zst 格式。
+  zh_Hant: Define Archiver 允許 Dify 工作流將檔案按自訂資料夾構造組織並封裝為可攜式封存檔案。支援 zip、tar.gz 和 tar.zst 格式。
+icon: icon.svg
+resource:
+  memory: 536870912
+  permission:
+    tool:
+      enabled: true
+    storage:
+      enabled: true
+      size: 1073741824  # 1GBをバイト換算、マーケットプレイスでは1073741824が限界
+plugins:
+  tools:
+    - provider/define_archiver.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: "1.5.0"
+created_at: 2026-07-30T00:00:00.000000000Z
+privacy: PRIVACY.md
+repo: https://github.com/schnee-tetra/define-archiver
+verified: false

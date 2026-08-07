@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1000 1000"
+   width="1000"
+   height="1000"
+   version="1.1"
+   id="svg15"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview15"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.39355469"
+     inkscape:cx="-60.98263"
+     inkscape:cy="119.42432"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="1080"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg15" />
+  <defs
+     id="defs7">
+    <linearGradient
+       id="linearGradient11"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#00f2fe"
+         stop-opacity="0.15"
+         id="stop10"
+         style="stop-color:#00f2fe;stop-opacity:0.69846857;" />
+      <stop
+         offset="100%"
+         stop-color="#4facfe"
+         stop-opacity="0.05"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient9"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#00f2fe"
+         stop-opacity="0.15"
+         id="stop8"
+         style="stop-color:#00f2fe;stop-opacity:0.79646939;" />
+      <stop
+         offset="100%"
+         stop-color="#4facfe"
+         stop-opacity="0.05"
+         id="stop9" />
+    </linearGradient>
+    <!-- 背景グラデーション -->
+    <radialGradient
+       id="bgGrad"
+       cx="256"
+       cy="256"
+       r="358.39999"
+       fx="256"
+       fy="256"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.953125,0,0,1.953125,2.4714638,2.8902623)">
+      <stop
+         offset="0%"
+         stop-color="#242930"
+         id="stop1" />
+      <stop
+         offset="100%"
+         stop-color="#14171c"
+         id="stop2" />
+    </radialGradient>
+    <!-- テックコンテナのグラデーション -->
+    <linearGradient
+       id="boxGrad"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#00f2fe"
+         stop-opacity="0.15"
+         id="stop3"
+         style="stop-color:#00f2fe;stop-opacity:0.59965777;" />
+      <stop
+         offset="100%"
+         stop-color="#4facfe"
+         stop-opacity="0.05"
+         id="stop4" />
+    </linearGradient>
+    <!-- 圧縮下矢印のグラデーション -->
+    <linearGradient
+       id="arrowGrad"
+       x1="272.47018"
+       y1="101.0019"
+       x2="136.23511"
+       y2="101.0019"
+       gradientTransform="scale(0.93955235,1.0643366)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#00f2fe"
+         stop-opacity="0.8"
+         id="stop5"
+         style="stop-color:#00f2fe;stop-opacity:0.85709798;" />
+      <stop
+         offset="1"
+         stop-color="#4facfe"
+         stop-opacity="0.9"
+         id="stop6"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         offset="100%"
+         stop-color="#000"
+         stop-opacity="0"
+         id="stop7" />
+    </linearGradient>
+    <!-- 文字のグロー（発光）エフェクト -->
+    <filter
+       id="glow"
+       y="-1.4527685"
+       height="3.9055369"
+       x="-0.11207844"
+       width="1.2241569">
+      <feGaussianBlur
+         stdDeviation="6"
+         result="blur"
+         id="feGaussianBlur7" />
+      <feComposite
+         in="SourceGraphic"
+         in2="blur"
+         operator="over"
+         id="feComposite7" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#boxGrad"
+       id="linearGradient15"
+       x1="84.915863"
+       y1="235.78114"
+       x2="282.40833"
+       y2="433.27362"
+       gradientTransform="scale(1.3938641,0.71743005)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient11"
+       id="linearGradient16"
+       x1="141.08351"
+       y1="201.81931"
+       x2="303.75842"
+       y2="364.49423"
+       gradientTransform="scale(0.84524407,1.1830902)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9"
+       id="linearGradient17"
+       x1="301.9838"
+       y1="201.81931"
+       x2="464.65869"
+       y2="364.49423"
+       gradientTransform="scale(0.84524407,1.1830902)"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Clean Edges"
+       id="filter24"
+       x="-0.0075000001"
+       y="-0.0066206898"
+       width="1.015"
+       height="1.0132414">
+      <feGaussianBlur
+         stdDeviation="0.4"
+         result="blur"
+         id="feGaussianBlur23" />
+      <feComposite
+         in="SourceGraphic"
+         in2="blur"
+         operator="in"
+         result="composite1"
+         id="feComposite23" />
+      <feComposite
+         in="composite1"
+         in2="composite1"
+         k2="1"
+         operator="in"
+         result="composite2"
+         id="feComposite24" />
+    </filter>
+  </defs>
+  <!-- 角丸背景ベース -->
+  <!-- 背景：微かなグリッドライン（テック感を演出） -->
+  <!-- 1. 左右中央の真上に配置された「圧縮」を意味する下矢印 -->
+  <!-- 2. オリジナリティを高める幾何学的な「半透明テックコンテナ」 -->
+  <!-- 3. 前面に大きく配置した「Define」ロゴタイプ -->
+  <!-- メインテキスト -->
+  <!-- アーカイバーとしてのプラグイン属性を示す細文字のアクセントサブテキスト -->
+  <rect
+     width="1000"
+     height="1000"
+     rx="187.5"
+     fill="url(#bgGrad)"
+     id="rect7"
+     x="2.4714639"
+     y="2.8902624"
+     style="fill:url(#bgGrad);stroke-width:1.95312" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#path9"
+     id="use12" />
+  <polygon
+     points="256,310 120,240 256,170 392,240 "
+     fill="url(#boxGrad)"
+     stroke="#4facfe"
+     stroke-width="1.5"
+     stroke-opacity="0.3"
+     id="polygon9"
+     style="opacity:0.85;fill:url(#linearGradient15);stroke:#4facfe;stroke-width:1.00004;stroke-dasharray:none;stroke-opacity:0.703343"
+     transform="matrix(2.7971765,0,0,2.7971765,-216.32425,-237.14308)" />
+  <polygon
+     points="120,360 120,240 256,310 256,430 "
+     fill="url(#boxGrad)"
+     stroke="#00f2fe"
+     stroke-width="1.5"
+     stroke-opacity="0.4"
+     id="polygon10"
+     style="opacity:0.85;fill:url(#linearGradient16);stroke:#00f2fe;stroke-width:1.00004;stroke-dasharray:none;stroke-opacity:0.697691"
+     transform="matrix(2.7971765,0,0,2.7971765,-216.32425,-237.14308)" />
+  <polygon
+     points="392,360 392,240 256,310 256,430 "
+     fill="url(#boxGrad)"
+     stroke="#4facfe"
+     stroke-width="1.5"
+     stroke-opacity="0.4"
+     id="polygon11"
+     style="opacity:0.85;fill:url(#linearGradient17);stroke:#4facfe;stroke-width:1.00004;stroke-dasharray:none;stroke-opacity:0.702702"
+     transform="matrix(2.7971765,0,0,2.7971765,-216.32425,-237.14308)" />
+  <line
+     x1="119.33692"
+     y1="434.17929"
+     x2="499.75293"
+     y2="629.98163"
+     stroke="#00f2fe"
+     stroke-width="1.5"
+     id="line12"
+     style="opacity:0.85;stroke-width:2.79729;stroke-dasharray:none" />
+  <line
+     x1="880.16888"
+     y1="434.17929"
+     x2="499.75293"
+     y2="629.98163"
+     stroke="#4facfe"
+     stroke-width="1.5"
+     id="line13"
+     style="opacity:0.85;stroke-width:2.79729;stroke-dasharray:none" />
+  <g
+     filter="url(#glow)"
+     id="g14"
+     transform="matrix(3.2226563,0,0,3.2226563,-329.56965,-377.67931)">
+    <!-- テキストシャドウ（視認性向上用） -->
+    <text
+       x="256"
+       y="315"
+       font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+       font-weight="900"
+       font-size="82px"
+       fill="#000000"
+       text-anchor="middle"
+       letter-spacing="-1"
+       id="text13">Define</text>
+    <text
+       x="502.47147"
+       y="612.26526"
+       font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+       font-weight="900"
+       font-size="160.156px"
+       fill="#ffffff"
+       text-anchor="middle"
+       letter-spacing="-1"
+       id="text14"
+       style="stroke-width:1.95312"
+       transform="matrix(0.512,0,0,0.512,-1.2653895,-1.4798143)">Define</text>
+  </g>
+  <path
+     d="m 232,35 h 48 v 80 h 40 l -64,65 -64,-65 h 40 z"
+     fill="url(#arrowGrad)"
+     id="path9"
+     style="fill:url(#arrowGrad);filter:url(#filter24)"
+     transform="matrix(2.578125,0,0,2.578125,-160.24709,-49.980484)" />
+  <path
+     d="M -47.528464,277.89033 H 1052.4716 m -1100.000064,275 H 1052.4716 m -1100.000064,275 H 1052.4716 M 227.47153,2.8903355 V 1102.8904 m 275,-1100.0000645 V 1102.8904 m 275,-1100.0000645 V 1102.8904"
+     stroke="#ffffff"
+     stroke-width="2.14843"
+     stroke-opacity="0.03"
+     id="path7" />
+  <text
+     x="256"
+     y="348"
+     font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+     font-weight="600"
+     font-size="14px"
+     fill="#00f2fe"
+     text-anchor="middle"
+     letter-spacing="8"
+     opacity="0.9"
+     filter="url(#glow)"
+     id="text15"
+     transform="matrix(3.8671875,0,0,3.8671875,-490.36604,-583.4904)">ARCHIVER</text>
+</svg>

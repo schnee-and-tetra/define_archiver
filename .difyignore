@@ -1,0 +1,29 @@
+# ─── Python / Dify Cache ───
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+
+# ─── Virtual environment ───
+.venv/
+env/
+venv/
+ENV/
+
+# ─── Files for build and distribution ───
+build/
+dist/
+*.egg-info/
+
+# dify plugins
+*.difypkg
+.installed
+
+# ─── IDE / OS ───
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ─── Others ───
+References/
