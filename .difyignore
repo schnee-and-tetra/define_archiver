@@ -19,6 +19,7 @@ dist/
 # dify plugins
 *.difypkg
 .installed
+.env
 
 # ─── IDE / OS ───
 .vscode/
