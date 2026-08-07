@@ -20,7 +20,17 @@ jobs:
       - name: Install Dify CLI
         run: pip install dify-cli
 
-      - name: Dify Plugin Marketplace Publish Action
-        uses: langgenius/dify-marketplace-publish-action@main
-        with:
-          github_token: ${{ secrets.PLUGIN_ACTION }}
+      - name: Package Plugin
+        run: dify plugin package ./
+
+      - name: Clone Marketplace Toolkit
+        run: |
+          gh repo clone langgenius/dify-marketplace-toolkit -- .scripts/
+        env:
+          GH_TOKEN: ${{ secrets.PLUGIN_ACTION }}
+
+      - name: Run Publish Script
+        run: |
+          python .scripts/publish.py
+        env:
+          GH_TOKEN: ${{ secrets.PLUGIN_ACTION }}
