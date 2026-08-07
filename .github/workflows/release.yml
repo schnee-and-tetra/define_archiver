@@ -35,12 +35,13 @@ jobs:
         id: plugin
         run: |
           python3 - <<'PY'
+          import os
           import yaml
 
           with open("manifest.yaml", "r") as f:
               data = yaml.safe_load(f)
 
-          with open("$GITHUB_OUTPUT", "a") as f:
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
               f.write(f"author={data['author']}\n")
               f.write(f"name={data['name']}\n")
               f.write(f"version={data['version']}\n")
