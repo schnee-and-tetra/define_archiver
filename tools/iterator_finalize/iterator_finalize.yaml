@@ -1,6 +1,6 @@
 identity:
     name: iterator_finalize
-    author: schnee_and_tetra
+    author: schnee-and-tetra
     label:
         en_US: Iterator Data Finalize
         ja_JP: イテレーター用・データ圧縮

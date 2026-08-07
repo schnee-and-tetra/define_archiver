@@ -4,19 +4,22 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Plugin Source
         uses: actions/checkout@v4
 
       - name: Install Dify Plugin CLI
         run: |
-          curl -L https://github.com/langgenius/dify-plugin-daemon/releases/latest/download/dify-plugin-linux-amd64 \
+          curl -L \
+            https://github.com/langgenius/dify-plugin-daemon/releases/latest/download/dify-plugin-linux-amd64 \
             -o dify
+
           chmod +x dify
           sudo mv dify /usr/local/bin/dify
 
@@ -24,7 +27,73 @@ jobs:
         run: |
           dify --version
 
-      - name: Package and Publish Plugin
-        uses: langgenius/dify-marketplace-publish-action@main
+      - name: Package Plugin
+        run: |
+          dify plugin package .
+
+      - name: Read Plugin Metadata
+        id: plugin
+        run: |
+          python3 - <<'PY'
+          import yaml
+
+          with open("manifest.yaml", "r") as f:
+              data = yaml.safe_load(f)
+
+          with open("$GITHUB_OUTPUT", "a") as f:
+              f.write(f"author={data['author']}\n")
+              f.write(f"name={data['name']}\n")
+              f.write(f"version={data['version']}\n")
+          PY
+
+      - name: Checkout Marketplace Fork
+        uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.PLUGIN_ACTION }}
+          repository: schnee-and-tetra/dify-plugins
+          token: ${{ secrets.PLUGIN_ACTION }}
+          path: marketplace
+
+      - name: Copy Plugin Package
+        run: |
+          mkdir -p \
+            marketplace/${{ steps.plugin.outputs.author }}/${{ steps.plugin.outputs.name }}
+
+          cp \
+            *.difypkg \
+            marketplace/${{ steps.plugin.outputs.author }}/${{ steps.plugin.outputs.name }}/
+
+      - name: Commit Marketplace Change
+        working-directory: marketplace
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          BRANCH="add-${{ steps.plugin.outputs.name }}-${{ steps.plugin.outputs.version }}"
+
+          git checkout -b "$BRANCH"
+
+          git add .
+
+          git commit \
+            -m "Add ${{ steps.plugin.outputs.name }} plugin"
+
+          git push origin "$BRANCH"
+
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.PLUGIN_ACTION }}
+        run: |
+          gh pr create \
+            --repo langgenius/dify-plugins \
+            --head schnee-and-tetra:add-${{ steps.plugin.outputs.name }}-${{ steps.plugin.outputs.version }} \
+            --base main \
+            --title "Add ${{ steps.plugin.outputs.name }} plugin" \
+            --body "
+          ## Plugin Submission
+
+          - Plugin: ${{ steps.plugin.outputs.name }}
+          - Version: ${{ steps.plugin.outputs.version }}
+          - Author: ${{ steps.plugin.outputs.author }}
+
+          Automated submission by GitHub Actions.
+          "

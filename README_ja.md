@@ -223,7 +223,41 @@ graph TD
 
 # 作者
 
-schnee_and_tetra ([308144300+schnee-tetra@users.noreply.github.com](mailto:308144300+schnee-tetra@users.noreply.github.com))
+schnee-and-tetra ([308144300+schnee-and-tetra@users.noreply.github.com](mailto:308144300+schnee-and-tetra@users.noreply.github.com))
+
+# セットアップ
+
+Define Archiver は、`.difypkg` パッケージを Dify にインポートすることでインストールできます。または Dify Plugin Marketplace からインストールできます。
+
+外部 API キー、認証情報、外部サービス接続は必要ありません。
+
+# 使用方法
+
+Define Archiver は、Dify ワークフロー向けのアーカイブ関連ツールを提供します。
+
+利用可能なツール：
+
+* `archive`
+  * テキストやドキュメントデータからアーカイブを作成します。
+
+* `archive_inspect`
+  * 展開せずにアーカイブ内容を確認します。
+
+* `iterator_collect`
+  * Dify Iterator ワークフロー内で分割データを収集します。
+
+* `iterator_finalize`
+  * 収集された Iterator データから最終アーカイブを生成します。
+
+# 要件
+
+* Dify Community Edition または Dify Cloud
+* 外部 API アクセスは不要です
+* 追加の認証情報は不要です
+
+# ソースリポジトリ
+
+https://github.com/schnee-and-tetra/define_archiver
 
 # ライセンス
 

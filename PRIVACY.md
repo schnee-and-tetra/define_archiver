@@ -93,4 +93,4 @@ The latest version is maintained together with the plugin source code.
 ## Contact
 
 For questions, bug reports, or security concerns, please use the official project repository issue tracker.
-- [@schnee_and_tetra on GitHub](https://github.com/schnee-tetra)
+- [@schnee-and-tetra on GitHub](https://github.com/schnee-and-tetra)

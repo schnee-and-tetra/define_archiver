@@ -224,7 +224,41 @@ graph TD
 
 # 作者
 
-schnee_and_tetra ([308144300+schnee-tetra@users.noreply.github.com](mailto:308144300+schnee-tetra@users.noreply.github.com))
+schnee-and-tetra ([308144300+schnee-and-tetra@users.noreply.github.com](mailto:308144300+schnee-and-tetra@users.noreply.github.com))
+
+# 安装
+
+Define Archiver 可以通过将 `.difypkg` 软件包导入 Dify 来安装，也可以通过 Dify Plugin Marketplace 进行安装。
+
+不需要外部 API 密钥、认证信息或外部服务连接。
+
+# 使用方法
+
+Define Archiver 为 Dify 工作流提供与归档相关的工具。
+
+可用工具：
+
+* `archive`
+  * 从文本或文档数据创建归档文件。
+
+* `archive_inspect`
+  * 无需解压即可检查归档内容。
+
+* `iterator_collect`
+  * 在 Dify Iterator 工作流中收集分段数据。
+
+* `iterator_finalize`
+  * 根据收集的 Iterator 数据生成最终归档文件。
+
+# 要求
+
+* Dify Community Edition 或 Dify Cloud
+* 无需外部 API 访问
+* 无需额外认证信息
+
+# 源代码仓库
+
+https://github.com/schnee-and-tetra/define_archiver
 
 # 许可证
 

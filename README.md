@@ -224,7 +224,32 @@ The `iterator_collect` and `iterator_finalize` combination is designed for large
 
 # Author
 
-schnee_and_tetra ([308144300+schnee-tetra@users.noreply.github.com](mailto:308144300+schnee-tetra@users.noreply.github.com))
+schnee-and-tetra ([308144300+schnee-and-tetra@users.noreply.github.com](mailto:308144300+schnee-and-tetra@users.noreply.github.com))
+
+# Setup
+
+Install Define Archiver by importing the `.difypkg` package into Dify or installing it from Dify Plugin Marketplace.
+
+No external API keys, credentials, or service connections are required.
+
+# Usage
+
+Define Archiver provides archive-related tools for Dify workflows:
+
+* Create archives from text or document data.
+* Inspect archive contents without extraction.
+* Collect incremental data inside Dify Iterator workflows.
+* Generate final archives from collected iterator data.
+
+# Requirements
+
+* Dify Community Edition or Dify Cloud
+* No external API access required
+* No additional credentials required
+
+# Source Repository
+
+https://github.com/schnee-and-tetra/define_archiver
 
 # License
 
