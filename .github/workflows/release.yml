@@ -98,5 +98,11 @@ jobs:
           - Version: ${{ steps.plugin.outputs.version }}
           - Author: ${{ steps.plugin.outputs.author }}
 
+          ## Risk Level
+
+          - [x] Low risk
+          - [ ] Medium risk
+          - [ ] High risk
+
           Automated submission by GitHub Actions.
           "
