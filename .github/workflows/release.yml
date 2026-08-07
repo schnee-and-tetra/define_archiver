@@ -71,22 +71,24 @@ jobs:
 
           BRANCH="add-${{ steps.plugin.outputs.name }}-${{ steps.plugin.outputs.version }}"
 
-          git checkout -b "$BRANCH"
+          git checkout -B "$BRANCH"
 
           git add .
 
           git commit \
-            -m "Add ${{ steps.plugin.outputs.name }} plugin"
+            -m "Add ${{ steps.plugin.outputs.name }} plugin" || echo "No changes"
 
-          git push origin "$BRANCH"
+          git push origin "$BRANCH" --force
 
-      - name: Create Pull Request
+      - name: Create Pull Request to Dify Official
         env:
           GH_TOKEN: ${{ secrets.PLUGIN_ACTION }}
         run: |
+          BRANCH="add-${{ steps.plugin.outputs.name }}-${{ steps.plugin.outputs.version }}"
+
           gh pr create \
-            --repo schnee-and-tetra/dify-plugins \
-            --head schnee-and-tetra:add-${{ steps.plugin.outputs.name }}-${{ steps.plugin.outputs.version }} \
+            --repo langgenius/dify-plugins \
+            --head schnee-and-tetra:"$BRANCH" \
             --base main \
             --title "Add ${{ steps.plugin.outputs.name }} plugin" \
             --body "
