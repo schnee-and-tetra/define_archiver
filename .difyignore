@@ -27,4 +27,5 @@ dist/
 Thumbs.db
 
 # ─── Others ───
+.git/
 References/
