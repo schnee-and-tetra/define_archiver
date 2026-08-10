@@ -1,5 +1,7 @@
 # Define Archiver
 
+English | [Japanese](README_ja.md) | [Simplified Chinese](README_zh-Hans.md) | [Traditional Chinese](README_zh-Hant.md)
+
 A Dify Plugin for creating, managing, and inspecting archives optimized for AI workflow automation.
 
 ## Overview
