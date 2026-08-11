@@ -1,6 +1,7 @@
 version: 0.0.1
 type: plugin
 author: schnee-and-tetra
+contact: 308144300+schnee-and-tetra@users.noreply.github.com
 name: define_archiver
 label:
   en_US: Define Archiver
