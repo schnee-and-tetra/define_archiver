@@ -21,7 +21,7 @@ resource:
       enabled: true
     storage:
       enabled: true
-      size: 1073741824  # 1GBをバイト換算、マーケットプレイスでは1073741824が限界
+      size: 1073741824  # 1GB
 plugins:
   tools:
     - provider/define_archiver.yaml
