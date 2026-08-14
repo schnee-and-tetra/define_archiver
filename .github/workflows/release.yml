@@ -86,14 +86,8 @@ jobs:
         run: |
           BRANCH="add-${{ steps.plugin.outputs.name }}-${{ steps.plugin.outputs.version }}"
 
-          # 既存のPRが存在するかチェック
-          EXISTING_PR=$(gh pr list --repo langgenius/dify-plugins --head schnee-and-tetra:"$BRANCH" --json number --jq '.[0].number')
-
-          if [ -n "$EXISTING_PR" ]; then
-            echo "Pull request already exists for $BRANCH (PR #$EXISTING_PR). Skipping creation."
-          else
-            # 1. 本文を一度ファイルに書き出す（クォーテーションの競合を防ぐため）
-            cat << 'EOF' > pr_body.md
+          # 1. 本文を一度ファイルに書き出す
+          cat << 'EOF' > pr_body.md
           ## Plugin Submission
 
           - Plugin: ${{ steps.plugin.outputs.name }}
@@ -129,11 +123,10 @@ jobs:
           - **Network requests**: The plugin utilizes `httpx.head` (`utils/urls.py`) solely for pre-validating external asset paths or integration URLs safely before processing any batch data.
           EOF
 
-            # 2. ファイルを指定してPRを作成
-            gh pr create \
-              --repo langgenius/dify-plugins \
-              --head schnee-and-tetra:"$BRANCH" \
-              --base main \
-              --title "Add ${{ steps.plugin.outputs.name }} plugin" \
-              --body-file pr_body.md
-          fi
+          # 2. PRを作成する（すでに存在しているエラーが出た場合は処理を止めずにメッセージを出力する）
+          gh pr create \
+            --repo langgenius/dify-plugins \
+            --head schnee-and-tetra:"$BRANCH" \
+            --base main \
+            --title "Add ${{ steps.plugin.outputs.name }} plugin" \
+            --body-file pr_body.md || echo "Pull request already exists or could not be created."
