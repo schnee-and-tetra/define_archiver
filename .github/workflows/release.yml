@@ -91,8 +91,7 @@ jobs:
             --head schnee-and-tetra:"$BRANCH" \
             --base main \
             --title "Add ${{ steps.plugin.outputs.name }} plugin" \
-            --body "
-          ## Plugin Submission
+            --body "## Plugin Submission
 
           - Plugin: ${{ steps.plugin.outputs.name }}
           - Version: ${{ steps.plugin.outputs.version }}
@@ -101,29 +100,28 @@ jobs:
           ## Plugin information
           - **Plugin Name**: Define Archiver
           - **Author**: schnee-and-tetra
-          
+
           ## Submission type
           - [x] New Plugin
           - [ ] Update Existing Plugin
 
           ## Risk Level
-
           - [x] Low risk
           - [ ] Medium risk
           - [ ] High risk
-          
+
           ## What changed
           - Implemented a Dify workflow tool that organizes and packages files into custom folder structures.
-          - Supports secure and high-performance archiving formats including `zip`, `tar.gz`, and `tar.zst`.
+          - Supports secure and high-performance archiving formats including \`zip\`, \`tar.gz\`, and \`tar.zst\`.
           - Added strict multi-language support (en_US, ja_JP, zh_Hans, zh_Hant) in the manifest configuration.
           - Configured isolated memory limit (512MB) and storage constraint (1GB) in compliance with Dify Marketplace standards.
-          
+
           ## Local validation
-          - Verified manifest schema validation successfully with the required `contact` field included.
+          - Verified manifest schema validation successfully with the required \`contact\` field included.
           - Passed local Python execution tests and confirmed compatibility with Dify version 1.5.0+.
           - Confirmed correct compression outputs and directory structures for all supported archive formats.
-          
+
           ## Security and privacy notes
-          - **Filesystem operations**: The plugin performs directory creation and write operations exclusively within the allowed local workspace (`utils/logger.py` and archiver core modules) to safely compress user-specified file hierarchies into portable archives.
-          - **Network requests**: The plugin utilizes `httpx.head` (`utils/urls.py`) solely for pre-validating external asset paths or integration URLs safely before processing any batch data.
+          - **Filesystem operations**: The plugin performs directory creation and write operations exclusively within the allowed local workspace (\`utils/logger.py\` and archiver core modules) to safely compress user-specified file hierarchies into portable archives.
+          - **Network requests**: The plugin utilizes \`httpx.head\` (\`utils/urls.py\`) solely for pre-validating external asset paths or integration URLs safely before processing any batch data.
           "
