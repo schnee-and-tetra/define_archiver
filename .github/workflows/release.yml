@@ -48,7 +48,7 @@ jobs:
           PY
 
       - name: Checkout Marketplace Fork
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: schnee-and-tetra/dify-plugins
           token: ${{ secrets.PLUGIN_ACTION }}
