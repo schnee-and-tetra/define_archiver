@@ -1,6 +1,6 @@
 # Define Archiver
 
-[English](README.md) | 日本語 | [简体中文](README_zh-Hans.md) | [繁體中文](README_zh-Hant.md)
+[English](README.md) | 日本語 | [简体中文](README.zh-Hans.md) | [繁體中文](README.zh-Hant.md)
 
 AIワークフロー自動化向けに最適化された、アーカイブの作成・管理・内容確認を行う Dify プラグインです。
 

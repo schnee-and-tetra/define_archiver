@@ -1,6 +1,6 @@
 # Define Archiver
 
-[English](README.md) | [日本語](README_ja.md) | [简体中文](README_zh-Hans.md) | 繁體中文
+[English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-Hans.md) | 繁體中文
 
 一個針對 AI 工作流程自動化最佳化的 Dify 外掛，用於建立、管理與檢查封存檔。
 

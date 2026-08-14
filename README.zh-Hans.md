@@ -1,6 +1,6 @@
 # Define Archiver
 
-[English](README.md) | [日本語](README_ja.md) | 简体中文 | [繁體中文](README_zh-Hant.md)
+[English](README.md) | [日本語](README.ja.md) | 简体中文 | [繁體中文](README.zh-Hant.md)
 
 一个针对 AI 工作流自动化优化的 Dify 插件，用于创建、管理和检查归档文件。
 
