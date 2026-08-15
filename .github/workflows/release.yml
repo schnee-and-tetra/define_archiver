@@ -88,15 +88,11 @@ jobs:
 
           # 1. 本文を一度ファイルに書き出す
           cat << 'EOF' > pr_body.md
-          ## Plugin Submission
-
-          - Plugin: ${{ steps.plugin.outputs.name }}
-          - Version: ${{ steps.plugin.outputs.version }}
-          - Author: ${{ steps.plugin.outputs.author }}
-
           ## Plugin information
-          - **Plugin Name**: Define Archiver
-          - **Author**: schnee-and-tetra
+          - **Plugin name**: Define Archiver
+          - **Version**: ${{ steps.plugin.outputs.version }}
+          - **Source repository**: https://github.com/${{ github.repository }}
+          - **Contact**: 308144300+schnee-and-tetra@users.noreply.github.com
 
           ## Submission type
           - [x] New Plugin
