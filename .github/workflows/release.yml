@@ -91,7 +91,7 @@ jobs:
           ## Plugin information
           - **Plugin name**: Define Archiver
           - **Version**: ${{ steps.plugin.outputs.version }}
-          - **Source repository**: https://github.com/${{ github.repository }}
+          - **Source repository**: https://github.com/schnee-and-tetra/define-archiver
           - **Author**: schnee-and-tetra
           - **Contact**: 308144300+schnee-and-tetra@users.noreply.github.com
 
