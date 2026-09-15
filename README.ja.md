@@ -255,6 +255,35 @@ Define Archiver は、Dify ワークフロー向けのアーカイブ関連ツ�
 * 外部 API アクセスは不要です
 * 追加の認証情報は不要です
 
+# トラブルシューティング & よくある質問 (FAQ)
+
+### Q1. 大規模なループ処理が、実行ステップ数やタイムアウトのエラーで途中で止まる
+* **症状**: 大規模なイテレーションの実行中に、`Maximum execution time exceeded`（最大実行時間を超過しました）などのエラーやステップ数の上限違反でワークフローが強制終了する。
+* **解決策**: 大規模なループに対応するため、`.env` ファイルのワークフローの制限値を引き上げてください。
+
+```env
+WORKFLOW_MAX_EXECUTION_STEPS=2000
+WORKFLOW_MAX_EXECUTION_TIME=3600
+LOOP_NODE_MAX_COUNT=200
+```
+
+### Q2. 処理の後半やアーカイブ生成時に `403 Forbidden (Invalid request)` エラーが発生する
+* **症状**: 多数のアイテムを処理している際、ループの後半や最終的なアーカイブの出力時に `403 Forbidden` エラーで失敗する。
+* **原因**: 長時間のバッチ処理中におけるタイムアウトやアクセス制限に関連する問題。
+* **解決策**: `.env` ファイルでファイルアクセスのタイムアウト時間を長めに設定する（例: `FILES_ACCESS_TIMEOUT=1800`）。
+
+```env
+FILES_ACCESS_TIMEOUT=1800
+```
+
+### Q3. `.env` の環境変数を変更したのに反映されない
+* **解決策**: 個別のコンテナの再起動や `docker compose restart` だけでは、システムレベルのワークフローやタイムアウトの制限値は更新されません。変更を適用するには、必ず一度完全にコンテナを停止・削除してから立ち上げ直す必要があります。
+
+```bash
+docker compose down
+docker compose up -d
+```
+
 # ソースリポジトリ
 
 https://github.com/schnee-and-tetra/define_archiver

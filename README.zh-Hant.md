@@ -256,6 +256,35 @@ Define Archiver 為 Dify 工作流程提供與封存相關的工具。
 * 不需要外部 API 存取
 * 不需要額外認證資訊
 
+# 故障排除與常見問題 (Troubleshooting & FAQ)
+
+### Q1. 大規模迴圈處理中途因執行步驟或逾時錯誤而中斷
+* **症狀**：在大規模迭代過程中，工作流突然終止，並出現 `Maximum execution time exceeded`（超出最大執行時間）或步驟限制違規等錯誤。
+* **解決方案**：請在 `.env` 檔案中調高工作流的資源限制，以適應大規模迴圈：
+
+```env
+WORKFLOW_MAX_EXECUTION_STEPS=2000
+WORKFLOW_MAX_EXECUTION_TIME=3600
+LOOP_NODE_MAX_COUNT=200
+```
+
+### Q2. 在後期檔案處理或壓縮檔生成時遇到 `403 Forbidden (Invalid request)` 錯誤
+* **症狀**：當處理大量項目時，後面的迴圈迭代或最終的壓縮檔輸出失敗並返回 `403 Forbidden` 錯誤。
+* **原因**：長時間批處理過程中可能出現的逾時或存取限制相關問題。
+* **解決方案**：請在 `.env` 檔案中將檔案存取逾時時間適當調高（例如：`FILES_ACCESS_TIMEOUT=1800`）。
+
+```env
+FILES_ACCESS_TIMEOUT=1800
+```
+
+### Q3. `.env` 中的環境變數修改未生效
+* **解決方案**：僅重啟單個容器或使用 `docker compose restart` 不足以更新系統級的工作流程和逾時限制。您必須執行完整的關閉和重啟循環才能使變更生效：
+
+```bash
+docker compose down
+docker compose up -d
+```
+
 # 原始碼儲存庫
 
 https://github.com/schnee-and-tetra/define_archiver

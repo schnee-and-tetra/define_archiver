@@ -247,6 +247,35 @@ Define Archiver provides archive-related tools for Dify workflows:
 * No external API access required
 * No additional credentials required
 
+# Troubleshooting & FAQ
+
+### Q1. Large-scale loop processing stops midway with execution step or timeout errors
+- **Symptom**: Workflows terminate abruptly with errors like `Maximum execution time exceeded` or step limit violations during large-scale iteration.
+- **Solution**: Increase the workflow resource limits in your `.env` file to accommodate large loops:
+
+```env
+WORKFLOW_MAX_EXECUTION_STEPS=2000
+WORKFLOW_MAX_EXECUTION_TIME=3600
+LOOP_NODE_MAX_COUNT=200
+```
+
+### Q2. Encountering `403 Forbidden (Invalid request)` errors during late-stage file processing or archive generation
+* **Symptom**: When processing a large number of items, later loop iterations or the final archive output fail with a `403 Forbidden` error.
+* **Cause**: Timeouts or access restrictions that may occur during lengthy batch processing.
+* **Solution**: Increase the file access timeout in your `.env` file to accommodate longer processing times (e.g., `FILES_ACCESS_TIMEOUT=1800`).
+
+```env
+FILES_ACCESS_TIMEOUT=1800
+```
+
+### Q3. Environment variable changes in `.env` are not taking effect
+- **Solution**: Simply restarting individual containers or using `docker compose restart` is insufficient for system-level workflow and timeout limits. You must perform a full teardown and restart cycle for the changes to apply:
+
+```bash
+docker compose down
+docker compose up -d
+```
+
 # Source Repository
 
 https://github.com/schnee-and-tetra/define_archiver
